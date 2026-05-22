@@ -8,10 +8,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  min-width: 0; /* IMPORTANT CHROME FIX */
 }
 
 html,
-body {
+body,
+#root {
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -60,7 +63,7 @@ body {
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.45);
 
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 10px;
 }
 
@@ -76,6 +79,7 @@ body {
   align-items: center;
   gap: 8px;
 
+  white-space: nowrap;
   text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.8);
 }
 
@@ -109,12 +113,16 @@ body {
 
   padding: 20px;
   align-items: flex-start;
+
+  width: 100%;
+  max-width: 100%;
 }
 
-/* IMPORTANT FIX */
+/* RESPONSIVE FIX: Changed flex-basis to 320px to prevent squashing on tablets */
 .task-form,
 .tasks-section {
-  flex: 1 1 400px;
+  flex: 1 1 320px;
+  width: 100%;
   min-width: 0;
 }
 
@@ -197,13 +205,14 @@ body {
    TASK SECTION
 ========================= */
 .tasks-section {
-  flex: 2 1 500px;
+  flex: 1;
 }
 
 .section-header h2 {
   text-align: center;
   font-size: 20px;
   font-weight: 800;
+  margin-bottom: 15px;
 }
 
 /* =========================
@@ -222,7 +231,8 @@ body {
 ========================= */
 .tasks-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* RESPONSIVE FIX: min(100%, 200px) keeps the grid safe on micro screens */
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
   gap: 16px;
 }
 
@@ -252,11 +262,17 @@ body {
   font-size: 15px;
   font-weight: 800;
   margin-bottom: 5px;
+  /* RESPONSIVE FIX: Prevents layout explosion from long unspaced strings */
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .task-content p {
   font-size: 13px;
   color: #4b5b72;
+  /* RESPONSIVE FIX: Same safeguard for paragraph text */
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* =========================
@@ -268,6 +284,11 @@ body {
   margin-top: 12px;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
 }
 
 /* =========================
@@ -290,79 +311,44 @@ body {
   background: #ff3d8d;
   color: white;
 }
-@media (max-width: 768px) {
 
-  /* =========================
-     LAYOUT
-  ========================= */
+/* =========================
+   MOBILE FIX
+========================= */
+@media (max-width: 768px) {
   .container {
     flex-direction: column;
     padding: 15px;
     gap: 15px;
   }
 
-  /* =========================
-     NAVBAR FIX (IMPORTANT)
-  ========================= */
   .navbar {
-    flex-direction: row;        /* 👈 FIX: row not column */
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 10px 14px;         /* 👈 reduce height */
-    gap: 10px;
-
-    flex-wrap: nowrap;          /* 👈 prevent stacking */
+    padding: 10px 14px;
   }
 
-  /* =========================
-     LOGO TEXT SMALL
-  ========================= */
   .logo {
-    font-size: 16px;            /* 👈 smaller text */
-    gap: 4px;
-    letter-spacing: 0.3px;
-
-    white-space: nowrap;        /* 👈 stop break */
+    font-size: 16px;
   }
 
-  /* =========================
-     TASK BADGE
-  ========================= */
   .task-count {
     font-size: 11px;
     padding: 4px 10px;
-    white-space: nowrap;
   }
 
-  /* =========================
-     CARDS & SECTIONS
-  ========================= */
-  .task-form,
-  .tasks-section {
-    flex: 1 1 100%;
-    min-width: 100%;
-  }
-
-  /* =========================
-     GRID FIX
-  ========================= */
   .tasks-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  /* =========================
-     FOOTER FIX
-  ========================= */
+  /* RESPONSIVE FIX: Changed alignment to handle small screen button wrapping better */
   .task-footer {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 8px;
   }
 
   .actions {
     width: 100%;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 }
