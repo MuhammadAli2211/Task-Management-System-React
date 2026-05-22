@@ -96,7 +96,6 @@ function App() {
   return (
     <div className="app">
 
-      {/* NAVBAR */}
 
       <nav className="navbar">
         <div className="logo">
