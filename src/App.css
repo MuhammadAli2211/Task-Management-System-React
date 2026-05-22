@@ -1,0 +1,343 @@
+/* =========================
+   GLOBAL TYPOGRAPHY (UPGRADED)
+========================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+
+  color: #243042;
+
+  background: linear-gradient(
+    135deg,
+    #ff6a88,
+    #ff99ac,
+    #8fd3f4,
+    #84fab0,
+    #f6d365
+  );
+
+  background-size: 300% 300%;
+  animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* =========================
+   APP WRAPPER
+========================= */
+.app {
+  min-height: 100vh;
+}
+
+/* =========================
+   NAVBAR (MORE PREMIUM)
+========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 30px;
+
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(22px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  color: #1f2a44;
+  letter-spacing: 0.6px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  text-shadow: 2px 2px 6px rgb(255, 255, 255);
+  width: 100%;
+}
+
+.logo span {
+  color: #ff3d8d;
+  display: flex;
+}
+.task-count {
+  background: rgba(31, 42, 68, 0.65);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.container {
+  display: flex;
+  gap: 28px;
+  padding: 30px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   FORM CARD (MORE DEPTH)
+========================= */
+.task-form {
+  flex: 1;
+  min-width: 320px;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px);
+
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 18px;
+
+  padding: 25px;
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.form-header h2 {
+  color: #1f2a44;   
+  font-size: 28px;
+    
+  font-weight: 800;
+  text-shadow: 2px 2px  4px rgba(0, 0, 0, 0.527);
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+/* =========================
+   INPUTS (CLEAN & MODERN)
+========================= */
+.input-group {
+  margin-bottom: 14px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 700;
+  color: #2b3445;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(31, 42, 68, 0.18);
+
+  background: rgba(255, 255, 255, 0.92);
+  color: #1f2a44;
+
+  font-weight: 500;
+  font-size: 14px;
+
+  outline: none;
+  transition: 0.25s ease;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: rgba(36, 48, 66, 0.45);
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #ff3d8d;
+  box-shadow: 0 0 0 3px rgba(255, 61, 141, 0.18);
+}
+
+/* =========================
+   BUTTON (SOFTER PREMIUM LOOK)
+========================= */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #ff3d8d, #6a5cff);
+  color: #ffffff;
+
+  font-weight: 800;
+  font-size: 15px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(255, 61, 141, 0.25);
+}
+
+/* =========================
+   TASK SECTION
+========================= */
+.tasks-section {
+  flex: 2;
+  min-width: 350px;
+}
+
+.section-header h2 {
+  color: #1f2a44;
+  font-weight: 800;
+  text-align: center;
+  font-size: 22px;
+  text-shadow: 2px 2px 6px rgb(255, 255, 255);
+}
+
+.section-header p {
+  color: #4a5a70;
+  margin-bottom: 18px;
+  font-size: 14px;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+.empty-state {
+  text-align: center;
+  padding: 50px;
+
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 18px;
+
+  border: 1px dashed rgba(31, 42, 68, 0.25);
+  color: #2b3445;
+  font-weight: 600;
+}
+
+/* =========================
+   TASK GRID
+========================= */
+.tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+/* =========================
+   TASK CARD (PREMIUM LOOK)
+========================= */
+.task-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px);
+
+  border-radius: 16px;
+  padding: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+
+  transition: 0.3s;
+}
+
+.task-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+/* top bar */
+.card-top {
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff3d8d, #6a5cff, #84fab0);
+  margin-bottom: 12px;
+}
+
+/* title (more premium) */
+.task-content h3 {
+  color: #1f2a44;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  letter-spacing: 0.2px;
+}
+
+/* description (FIXED + MORE STYLISH) */
+.task-content p {
+  color: #4b5b72;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.task-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.date {
+  font-size: 12px;
+  color: #5c6f88;
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.edit-btn,
+.delete-btn {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 12px;
+}
+
+.edit-btn {
+  background: #ffd84d;
+  color: #1f2a44;
+}
+
+.delete-btn {
+  background: #ff3d8d;
+  color: #ffffff;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
